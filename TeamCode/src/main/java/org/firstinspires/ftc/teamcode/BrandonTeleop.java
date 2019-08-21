@@ -9,10 +9,12 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 public class BrandonTeleop extends LinearOpMode {
     private DcMotor rightMotor;
     private DcMotor leftMotor;
+    private DcMotor armMotor;
     @Override
     public void runOpMode(){
         rightMotor=hardwareMap.get(DcMotor.class,"right");
         leftMotor=hardwareMap.get(DcMotor.class,"left");
+        armMotor=hardwareMap.get(DcMotor.class,"scoop");
 
         telemetry.addData("Status","Initialized");
         telemetry.update();
@@ -35,6 +37,15 @@ public class BrandonTeleop extends LinearOpMode {
             else{
                 leftMotor.setPower(left);
                 rightMotor.setPower(right);
+            }
+            if(this.gamepad1.dpad_up){
+                armMotor.setPower(1);
+            }
+            else if(this.gamepad1.dpad_down){
+                armMotor.setPower(-1);
+            }
+            else{
+                armMotor.setPower(0);
             }
 
 
