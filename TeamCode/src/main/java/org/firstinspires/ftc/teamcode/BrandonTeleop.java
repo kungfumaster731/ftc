@@ -10,12 +10,13 @@ public class BrandonTeleop extends LinearOpMode {
     private DcMotor rightMotor;
     private DcMotor leftMotor;
     private DcMotor armMotor;
+    private DcMotor elevatorMotor;
     @Override
     public void runOpMode(){
         rightMotor=hardwareMap.get(DcMotor.class,"right");
         leftMotor=hardwareMap.get(DcMotor.class,"left");
         armMotor=hardwareMap.get(DcMotor.class,"scoop");
-
+        elevatorMotor=hardwareMap.get(DcMotor.class,"elevator");
         telemetry.addData("Status","Initialized");
         telemetry.update();
         boolean modes=false;
@@ -47,6 +48,16 @@ public class BrandonTeleop extends LinearOpMode {
             else{
                 armMotor.setPower(0);
             }
+            if(this.gamepad1.right_bumper){
+                elevatorMotor.setPower(1);
+            }
+            if(this.gamepad1.right_trigger>0.5){
+                elevatorMotor.setPower(-1);
+            }
+            else{
+                elevatorMotor.setPower(0);
+            }
+
 
 
             telemetry.addData("Status","Running");
