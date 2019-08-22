@@ -39,5 +39,6 @@ public class encoder_auto extends LinearOpMode {
         rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         moveTarget();
+
     }
 }
